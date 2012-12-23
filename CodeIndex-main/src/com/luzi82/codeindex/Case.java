@@ -9,11 +9,20 @@ public class Case implements Runnable {
 	}
 
 	Listener mListener;
+	final String mDescription;
 
 	// protected int mTimeout;
 	// protected long mStartTime;
 	// protected long mSpeedTestResult;
 	// protected int mSpeedTestLoop;
+
+	public Case(String aDescription) {
+		mDescription = aDescription;
+	}
+
+	public String getDescription() {
+		return mDescription;
+	}
 
 	public void setListener(Listener aListener) {
 		mListener = aListener;

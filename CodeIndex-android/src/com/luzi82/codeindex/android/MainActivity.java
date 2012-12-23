@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.luzi82.codeindex.ByteArrayCopy;
 import com.luzi82.codeindex.ByteArrayFill;
+import com.luzi82.codeindex.Case;
 import com.luzi82.codeindex.CaseList;
 
 public class MainActivity extends ListActivity {
@@ -65,13 +66,21 @@ public class MainActivity extends ListActivity {
 
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
-				Class<?> c = mCaseList.get(position);
-				if (convertView == null) {
-					convertView = mInflater.inflate(android.R.layout.simple_list_item_1, parent, false);
+				try {
+					Class<?> c = mCaseList.get(position);
+					if (convertView == null) {
+						convertView = mInflater.inflate(android.R.layout.simple_list_item_2, parent, false);
+					}
+					TextView tv1 = (TextView) convertView.findViewById(android.R.id.text1);
+					tv1.setText(c.getSimpleName());
+					TextView tv2 = (TextView) convertView.findViewById(android.R.id.text2);
+					tv2.setText(((Case) (c.newInstance())).getDescription());
+					return convertView;
+				} catch (InstantiationException e) {
+					throw new Error(e);
+				} catch (IllegalAccessException e) {
+					throw new Error(e);
 				}
-				TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
-				tv.setText(c.getSimpleName());
-				return convertView;
 			}
 
 			@Override
