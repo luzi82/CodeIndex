@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.luzi82.codeindex.ByteArrayCopy;
+import com.luzi82.codeindex.ByteArrayFill;
 import com.luzi82.codeindex.CaseList;
 
 public class MainActivity extends ListActivity {
@@ -116,6 +117,7 @@ public class MainActivity extends ListActivity {
 
 	private void configTestCase() {
 		ByteArrayCopy.CASE_DATA = new int[] { 10000, 100000, 1000000 };
+		ByteArrayFill.CASE_DATA = new int[] { 10000, 100000, 1000000 };
 	}
 
 	@Override
