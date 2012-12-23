@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
@@ -116,4 +118,22 @@ public class MainActivity extends ListActivity {
 		ByteArrayCopy.CASE_DATA = new int[] { 10000, 100000, 1000000 };
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.activity_main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_item_about: {
+			Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(intent);
+			return true;
+		}
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
 }
