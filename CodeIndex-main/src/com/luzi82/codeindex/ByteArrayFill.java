@@ -6,7 +6,7 @@ public class ByteArrayFill extends Case {
 
 	public static int TIME_LIMIT = 10000;
 	public static int LOOP_PER_TICK = 100;
-	// public static long LOOP_COUNT = 10000000000L;
+	public static int SRC_SIZE = 10000;
 	public static int[] CASE_DATA = {//
 	100000,//
 			1000000,//
@@ -14,7 +14,7 @@ public class ByteArrayFill extends Case {
 	};
 
 	public ByteArrayFill() {
-		super("Arrays.fill vs for-loop{a[i]=0}");
+		super("Arrays.fill vs for-loop{a[i]=0} vs System.arraycopy");
 	}
 
 	public Object[] test_Arrays_fill_data() {
@@ -67,6 +67,32 @@ public class ByteArrayFill extends Case {
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000;
 		msg(String.format("test_manualfill: %d: %.1f/s", ARRAY_SIZE, donePerSec));
+	}
+
+	public Object[] test_System_arraycopy_data() {
+		return test_Arrays_fill_data();
+	}
+
+	public void test_System_arraycopy(Object arg) {
+		final int ARRAY_SIZE = (Integer) arg;
+		final byte[] src = new byte[SRC_SIZE];
+		final byte[] dest = new byte[ARRAY_SIZE];
+		long now = System.currentTimeMillis();
+		long startTime = now;
+		long endTime = startTime + TIME_LIMIT;
+		int done = 0;
+		while (now < endTime) {
+			for (int i = 0; i < LOOP_PER_TICK; ++i) {
+				for (int j = 0; j < ARRAY_SIZE; j += SRC_SIZE) {
+					System.arraycopy(src, 0, dest, j, SRC_SIZE);
+				}
+			}
+			done += LOOP_PER_TICK;
+			now = System.currentTimeMillis();
+		}
+		long timeDone = now - startTime;
+		float donePerSec = (((float) done) / timeDone) * 1000;
+		msg(String.format("test_System_arraycopy: %d: %.1f/s", ARRAY_SIZE, donePerSec));
 	}
 
 	/**
