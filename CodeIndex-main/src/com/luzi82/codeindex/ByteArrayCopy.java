@@ -36,7 +36,7 @@ public class ByteArrayCopy extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000;
-		msg(String.format("test_System_arraycopy: %d: %.1f", ARRAY_SIZE, donePerSec));
+		msg(String.format("test_System_arraycopy: %d: %.1f/s", ARRAY_SIZE, donePerSec));
 	}
 
 	public Object[] test_manualcopy_data() {
@@ -62,7 +62,7 @@ public class ByteArrayCopy extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000;
-		msg(String.format("test_manualcopy: %d: %.1f", ARRAY_SIZE, donePerSec));
+		msg(String.format("test_manualcopy: %d: %.1f/s", ARRAY_SIZE, donePerSec));
 	}
 
 	/**
