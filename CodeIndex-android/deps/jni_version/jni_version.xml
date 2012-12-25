@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<template><zero>
+<file_out mkdir="1" bubble="0">
+<file>jni/version.h</file>
+<scope>#ifndef __AUTO_VERSION__
+#define __AUTO_VERSION__ ("<datetime format="yyyyMMddHHmmss"/>")
+#endif
+</scope>
+</file_out>
+</zero></template>
+

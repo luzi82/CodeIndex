@@ -40,5 +40,12 @@
     <Preference
         android:key="about_share"
         android:title="@string/about_share_title" />
+    <Preference
+        android:key="about_jni"
+        android:title="@string/about_jni_title" />
+    <Preference
+        android:key="about_share"
+        android:summary="@string/i18n_version"
+        android:title="@string/about_i18n_version_title" />
 
 </PreferenceScreen>

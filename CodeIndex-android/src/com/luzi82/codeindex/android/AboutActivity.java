@@ -52,6 +52,12 @@ public class AboutActivity extends PreferenceActivity {
 		Preference qrcodePreference = findPreference("about_share");
 		Intent qrcodeIntent = new Intent(this, QRCode.class);
 		qrcodePreference.setIntent(qrcodeIntent);
+
+		// jni ver
+		Preference jniPreference = findPreference("about_jni");
+		byte[] jniStringBuf = new byte[256];
+		Jni.getVersion(jniStringBuf);
+		jniPreference.setSummary(new String(jniStringBuf));
 	}
 
 }
