@@ -117,4 +117,39 @@ public class Case implements Runnable {
 		}
 	}
 
+	public static String metricPrefix(float mValue) {
+		if (mValue == 0) {
+			return "0.00";
+		}
+		String signSuf = "";
+		if (mValue < 0) {
+			signSuf = "-";
+			mValue *= -1;
+		}
+		String[] METRIC_PREFIX_UP = { "", "k", "M", "G", "T", "P", "E", "Z", "Y" };
+		String[] METRIC_PREFIX_DOWN = { "", "m", "μ", "n", "p", "f", "a", "z", "y" };
+		float factor = 0;
+		String[] mp = null;
+		int mpIdx = 0;
+		if (mValue < 1) {
+			mp = METRIC_PREFIX_DOWN;
+			factor = 1000;
+		} else {
+			mp = METRIC_PREFIX_UP;
+			factor = 0.001f;
+		}
+		while (true) {
+			if ((mValue < 1000) && (mValue >= 1))
+				break;
+			if (mpIdx >= METRIC_PREFIX_UP.length - 1)
+				break;
+			mValue *= factor;
+			++mpIdx;
+		}
+		String numString = String.format("%1.2f", mValue).substring(0, 4);
+		if (numString.endsWith("."))
+			numString = numString.substring(0, numString.length() - 1);
+		return signSuf + numString + mp[mpIdx];
+	}
+
 }

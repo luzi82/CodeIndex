@@ -40,8 +40,8 @@ public class ByteArrayFill extends Case {
 			now = System.currentTimeMillis();
 		}
 		long timeDone = now - startTime;
-		float donePerSec = (((float) done) / timeDone) * 1000;
-		msg(String.format("test_Arrays_fill: %d: %.1f/s", ARRAY_SIZE, donePerSec));
+		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
+		msg(String.format("test_Arrays_fill: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
 	public Object[] test_manualfill_data() {
@@ -65,8 +65,8 @@ public class ByteArrayFill extends Case {
 			now = System.currentTimeMillis();
 		}
 		long timeDone = now - startTime;
-		float donePerSec = (((float) done) / timeDone) * 1000;
-		msg(String.format("test_manualfill: %d: %.1f/s", ARRAY_SIZE, donePerSec));
+		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
+		msg(String.format("test_manualfill: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
 	public Object[] test_System_arraycopy_data() {
@@ -91,8 +91,8 @@ public class ByteArrayFill extends Case {
 			now = System.currentTimeMillis();
 		}
 		long timeDone = now - startTime;
-		float donePerSec = (((float) done) / timeDone) * 1000;
-		msg(String.format("test_System_arraycopy: %d: %.1f/s", ARRAY_SIZE, donePerSec));
+		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
+		msg(String.format("test_System_arraycopy: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
 	/**
