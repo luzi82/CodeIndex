@@ -1,6 +1,5 @@
 package com.luzi82.codeindex.android;
 
-import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 
 import com.luzi82.codeindex.ByteArrayCopy;
 import com.luzi82.codeindex.ByteArrayFill;
-import com.luzi82.codeindex.Case;
 import com.luzi82.codeindex.CaseList;
 
 public class MainActivity extends ListActivity {
