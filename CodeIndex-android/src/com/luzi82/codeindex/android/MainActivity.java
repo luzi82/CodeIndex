@@ -1,5 +1,6 @@
 package com.luzi82.codeindex.android;
 
+import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -73,10 +74,16 @@ public class MainActivity extends ListActivity {
 					}
 					TextView tv1 = (TextView) convertView.findViewById(android.R.id.text1);
 					tv1.setText(c.getSimpleName());
+					String description = "";
+					try {
+						description = (String) (c.getField("DESCRIPTION").get(null));
+					} catch (NoSuchFieldException e) {
+						// expected, do nothing
+					}
 					TextView tv2 = (TextView) convertView.findViewById(android.R.id.text2);
-					tv2.setText(((Case) (c.newInstance())).getDescription());
+					tv2.setText(description);
 					return convertView;
-				} catch (InstantiationException e) {
+				} catch (IllegalArgumentException e) {
 					throw new Error(e);
 				} catch (IllegalAccessException e) {
 					throw new Error(e);

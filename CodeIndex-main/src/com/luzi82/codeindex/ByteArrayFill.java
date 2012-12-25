@@ -13,9 +13,7 @@ public class ByteArrayFill extends Case {
 			10000000,//
 	};
 
-	public ByteArrayFill() {
-		super("Arrays.fill vs for-loop{a[i]=0} vs System.arraycopy");
-	}
+	public static final String DESCRIPTION = "Arrays.fill vs for-loop{a[i]=0} vs System.arraycopy";
 
 	public Object[] test_Arrays_fill_data() {
 		Object[] ret = new Object[CASE_DATA.length];

@@ -2,9 +2,7 @@ package com.luzi82.codeindex;
 
 public class ByteArrayCopy extends Case {
 
-	public ByteArrayCopy() {
-		super("System.arraycopy vs for-loop{a[i]=b[i]}");
-	}
+	public static final String DESCRIPTION = "System.arraycopy vs for-loop{a[i]=b[i]}";
 
 	public static int TIME_LIMIT = 10000;
 	public static int LOOP_PER_TICK = 100;
