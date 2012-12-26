@@ -21,7 +21,7 @@ public class ByteArrayCopyAndroid extends ByteArrayCopy {
 		int done = 0;
 		while (now < endTime) {
 			for (int i = 0; i < LOOP_PER_TICK; ++i) {
-				Jni.memcpyGetByteArrayElementsJNIABORT(dest, src);
+				Jni.memcpyGetReleaseByteArrayElementsJNIABORT(dest, src);
 			}
 			done += LOOP_PER_TICK;
 			now = System.currentTimeMillis();
@@ -45,7 +45,7 @@ public class ByteArrayCopyAndroid extends ByteArrayCopy {
 		int done = 0;
 		while (now < endTime) {
 			for (int i = 0; i < LOOP_PER_TICK; ++i) {
-				Jni.memcpyGetByteArrayElements0(dest, src);
+				Jni.memcpyGetReleaseByteArrayElements0(dest, src);
 			}
 			done += LOOP_PER_TICK;
 			now = System.currentTimeMillis();

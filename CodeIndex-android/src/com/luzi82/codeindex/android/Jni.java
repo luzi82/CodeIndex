@@ -8,10 +8,18 @@ public class Jni {
 
 	public static native void getVersion(byte[] out);
 	
-	public static native void memcpyGetByteArrayElementsJNIABORT(byte[] dest,byte[] src);
+	// memcpy
+	
+	public static native void memcpyGetReleaseByteArrayElementsJNIABORT(byte[] dest,byte[] src);
 
-	public static native void memcpyGetByteArrayElements0(byte[] dest,byte[] src);
+	public static native void memcpyGetReleaseByteArrayElements0(byte[] dest,byte[] src);
 
 	public static native void memcpyGetReleasePrimitiveArrayCritical(byte[] dest,byte[] src);
+
+	// memset
+	
+	public static native void memsetGetReleaseByteArrayElements(byte[] dest,byte value);
+
+	public static native void memsetGetReleasePrimitiveArrayCritical(byte[] dest,byte value);
 
 }
