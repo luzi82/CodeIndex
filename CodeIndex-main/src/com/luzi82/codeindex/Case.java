@@ -1,6 +1,8 @@
 package com.luzi82.codeindex;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class Case implements Runnable {
 
@@ -34,6 +36,16 @@ public class Case implements Runnable {
 	protected void runAllTest() {
 		try {
 			Method[] mv = getClass().getMethods();
+			Arrays.sort(mv, new Comparator<Method>() {
+				@Override
+				public int compare(Method arg0, Method arg1) {
+					int ret;
+					ret = arg0.getName().compareTo(arg1.getName());
+					if (ret != 0)
+						return ret;
+					return arg0.toString().compareTo(arg1.toString());
+				}
+			});
 			for (Method m : mv) {
 				String name = m.getName();
 				if (!name.startsWith("test_"))
