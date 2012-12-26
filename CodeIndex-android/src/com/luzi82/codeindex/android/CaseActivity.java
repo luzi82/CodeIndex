@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.luzi82.codeindex.Case;
 
-public class CastActivity extends Activity {
+public class CaseActivity extends Activity {
 
 	public static final String CASE_CLASS_NAME = "CASE_CLASS_NAME";
 

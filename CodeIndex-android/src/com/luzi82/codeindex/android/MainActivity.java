@@ -124,8 +124,8 @@ public class MainActivity extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		Class<?> c = mCaseList.get(position);
-		Intent intent = new Intent(this, CastActivity.class);
-		intent.putExtra(CastActivity.CASE_CLASS_NAME, c.getName());
+		Intent intent = new Intent(this, CaseActivity.class);
+		intent.putExtra(CaseActivity.CASE_CLASS_NAME, c.getName());
 		startActivity(intent);
 	}
 
