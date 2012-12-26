@@ -12,10 +12,12 @@ public class ByteArrayFill extends Case {
 			1000000,//
 			10000000,//
 	};
+	
+	public static int CHECK_SIZE = 1024;
 
 	public static final String DESCRIPTION = "Arrays.fill vs for-loop{a[i]=0} vs System.arraycopy";
 
-	public Object[] test_Arrays_fill_data() {
+	public Object[] test_Arrays_fill_speed_data() {
 		Object[] ret = new Object[CASE_DATA.length];
 		for (int i = 0; i < CASE_DATA.length; ++i) {
 			ret[i] = CASE_DATA[i];
@@ -23,7 +25,7 @@ public class ByteArrayFill extends Case {
 		return ret;
 	}
 
-	public void test_Arrays_fill(Object arg) {
+	public void test_Arrays_fill_speed(Object arg) {
 		final int ARRAY_SIZE = (Integer) arg;
 		final byte[] ary = new byte[ARRAY_SIZE];
 		long now = System.currentTimeMillis();
@@ -39,14 +41,14 @@ public class ByteArrayFill extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_Arrays_fill: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_Arrays_fill_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
-	public Object[] test_manualfill_data() {
-		return test_Arrays_fill_data();
+	public Object[] test_manualfill_speed_data() {
+		return test_Arrays_fill_speed_data();
 	}
 
-	public void test_manualfill(Object arg) {
+	public void test_manualfill_speed(Object arg) {
 		final int ARRAY_SIZE = (Integer) arg;
 		final byte[] ary = new byte[ARRAY_SIZE];
 		long now = System.currentTimeMillis();
@@ -64,14 +66,14 @@ public class ByteArrayFill extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_manualfill: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_manualfill_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
-	public Object[] test_System_arraycopy_data() {
-		return test_Arrays_fill_data();
+	public Object[] test_System_arraycopy_speed_data() {
+		return test_Arrays_fill_speed_data();
 	}
 
-	public void test_System_arraycopy(Object arg) {
+	public void test_System_arraycopy_speed(Object arg) {
 		final int ARRAY_SIZE = (Integer) arg;
 		final byte[] src = new byte[SRC_SIZE];
 		final byte[] dest = new byte[ARRAY_SIZE];
@@ -90,7 +92,7 @@ public class ByteArrayFill extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_System_arraycopy: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_System_arraycopy_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
 	/**

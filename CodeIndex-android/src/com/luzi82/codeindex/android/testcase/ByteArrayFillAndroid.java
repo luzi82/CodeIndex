@@ -7,11 +7,26 @@ public class ByteArrayFillAndroid extends ByteArrayFill {
 
 	public static final String DESCRIPTION = "Arrays.fill vs for-loop{a[i]=0} vs System.arraycopy vs JNI";
 
-	public Object[] test_jni_memset_GetReleaseByteArrayElements_data() {
-		return test_System_arraycopy_data();
+	/////////////////////
+
+	public void test_jni_memset_GetReleaseByteArrayElements_check(Object arg) {
+		final byte[] dest = new byte[CHECK_SIZE];
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			dest[i] = (byte) (i & 0xff);
+		}
+		Jni.memsetGetReleaseByteArrayElements(dest, (byte) 0x37);
+		boolean good = true;
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			good = good & (dest[i] == (byte) (0x37));
+		}
+		msg(String.format("test_jni_memset_GetReleaseByteArrayElements_check: %s", good ? "PASS" : "FAIL"));
 	}
 
-	public void test_jni_memset_GetReleaseByteArrayElements(Object arg) {
+	public Object[] test_jni_memset_GetReleaseByteArrayElements_speed_data() {
+		return test_System_arraycopy_speed_data();
+	}
+
+	public void test_jni_memset_GetReleaseByteArrayElements_speed(Object arg) {
 		final int ARRAY_SIZE = (Integer) arg;
 		final byte[] dest = new byte[ARRAY_SIZE];
 		long now = System.currentTimeMillis();
@@ -27,14 +42,29 @@ public class ByteArrayFillAndroid extends ByteArrayFill {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_jni_memset_GetReleaseByteArrayElements: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_jni_memset_GetReleaseByteArrayElements_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
-	public Object[] test_jni_memset_GetReleasePrimitiveArrayCritical_data() {
-		return test_System_arraycopy_data();
+	/////////////////////
+
+	public void test_jni_memset_GetReleasePrimitiveArrayCritical_check(Object arg) {
+		final byte[] dest = new byte[CHECK_SIZE];
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			dest[i] = (byte) (i & 0xff);
+		}
+		Jni.memsetGetReleasePrimitiveArrayCritical(dest, (byte) 0x37);
+		boolean good = true;
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			good = good & (dest[i] == (byte) (0x37));
+		}
+		msg(String.format("test_jni_memset_GetReleasePrimitiveArrayCritical_check: %s", good ? "PASS" : "FAIL"));
 	}
 
-	public void test_jni_memset_GetReleasePrimitiveArrayCritical(Object arg) {
+	public Object[] test_jni_memset_GetReleasePrimitiveArrayCritical_speed_data() {
+		return test_System_arraycopy_speed_data();
+	}
+
+	public void test_jni_memset_GetReleasePrimitiveArrayCritical_speed(Object arg) {
 		final int ARRAY_SIZE = (Integer) arg;
 		final byte[] dest = new byte[ARRAY_SIZE];
 		long now = System.currentTimeMillis();
@@ -50,7 +80,7 @@ public class ByteArrayFillAndroid extends ByteArrayFill {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_jni_memset_GetReleasePrimitiveArrayCritical: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_jni_memset_GetReleasePrimitiveArrayCritical_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
 }

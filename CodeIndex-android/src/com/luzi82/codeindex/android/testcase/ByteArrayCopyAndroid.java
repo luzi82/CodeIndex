@@ -7,11 +7,27 @@ public class ByteArrayCopyAndroid extends ByteArrayCopy {
 
 	public static final String DESCRIPTION = "System.arraycopy vs for-loop{a[i]=b[i]} vs JNI";
 
-	public Object[] test_jni_memcpy_GetReleaseByteArrayElements_JNIABORT_data() {
-		return test_System_arraycopy_data();
+	// /////////////
+
+	public void test_jni_memcpy_GetReleaseByteArrayElements_JNIABORT_check(Object arg) {
+		final byte[] src = new byte[CHECK_SIZE];
+		final byte[] dest = new byte[CHECK_SIZE];
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			src[i] = (byte) (i & 0xff);
+		}
+		Jni.memcpyGetReleaseByteArrayElementsJNIABORT(dest, src);
+		boolean good = true;
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			good = good & (dest[i] == (byte) (i & 0xff));
+		}
+		msg(String.format("test_jni_memcpy_GetReleaseByteArrayElements_JNIABORT_check: %s", good ? "PASS" : "FAIL"));
 	}
 
-	public void test_jni_memcpy_GetReleaseByteArrayElements_JNIABORT(Object arg) {
+	public Object[] test_jni_memcpy_GetReleaseByteArrayElements_JNIABORT_speed_data() {
+		return test_System_arraycopy_speed_data();
+	}
+
+	public void test_jni_memcpy_GetReleaseByteArrayElements_JNIABORT_speed(Object arg) {
 		final int ARRAY_SIZE = (Integer) arg;
 		final byte[] src = new byte[ARRAY_SIZE];
 		final byte[] dest = new byte[ARRAY_SIZE];
@@ -28,14 +44,30 @@ public class ByteArrayCopyAndroid extends ByteArrayCopy {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_jni_memcpy_GetReleaseByteArrayElements_JNIABORT: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_jni_memcpy_GetReleaseByteArrayElements_JNIABORT_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
-	public Object[] test_jni_memcpy_GetReleaseByteArrayElements_0_data() {
-		return test_System_arraycopy_data();
+	// /////////////
+
+	public void test_jni_memcpy_GetReleaseByteArrayElements_0_check(Object arg) {
+		final byte[] src = new byte[CHECK_SIZE];
+		final byte[] dest = new byte[CHECK_SIZE];
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			src[i] = (byte) (i & 0xff);
+		}
+		Jni.memcpyGetReleaseByteArrayElements0(dest, src);
+		boolean good = true;
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			good = good & (dest[i] == (byte) (i & 0xff));
+		}
+		msg(String.format("test_jni_memcpy_GetReleaseByteArrayElements_0_check: %s", good ? "PASS" : "FAIL"));
 	}
 
-	public void test_jni_memcpy_GetReleaseByteArrayElements_0(Object arg) {
+	public Object[] test_jni_memcpy_GetReleaseByteArrayElements_0_speed_data() {
+		return test_System_arraycopy_speed_data();
+	}
+
+	public void test_jni_memcpy_GetReleaseByteArrayElements_0_speed(Object arg) {
 		final int ARRAY_SIZE = (Integer) arg;
 		final byte[] src = new byte[ARRAY_SIZE];
 		final byte[] dest = new byte[ARRAY_SIZE];
@@ -52,14 +84,30 @@ public class ByteArrayCopyAndroid extends ByteArrayCopy {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_jni_memcpy_GetReleaseByteArrayElements_0: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_jni_memcpy_GetReleaseByteArrayElements_0_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
-	public Object[] test_jni_memcpy_GetReleasePrimitiveArrayCritical_data() {
-		return test_System_arraycopy_data();
+	// /////////////
+
+	public void test_jni_memcpy_GetReleasePrimitiveArrayCritical_check(Object arg) {
+		final byte[] src = new byte[CHECK_SIZE];
+		final byte[] dest = new byte[CHECK_SIZE];
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			src[i] = (byte) (i & 0xff);
+		}
+		Jni.memcpyGetReleasePrimitiveArrayCritical(dest, src);
+		boolean good = true;
+		for (int i = 0; i < CHECK_SIZE; ++i) {
+			good = good & (dest[i] == (byte) (i & 0xff));
+		}
+		msg(String.format("test_jni_memcpy_GetReleasePrimitiveArrayCritical_check: %s", good ? "PASS" : "FAIL"));
 	}
 
-	public void test_jni_memcpy_GetReleasePrimitiveArrayCritical(Object arg) {
+	public Object[] test_jni_memcpy_GetReleasePrimitiveArrayCritical_speed_data() {
+		return test_System_arraycopy_speed_data();
+	}
+
+	public void test_jni_memcpy_GetReleasePrimitiveArrayCritical_speed(Object arg) {
 		final int ARRAY_SIZE = (Integer) arg;
 		final byte[] src = new byte[ARRAY_SIZE];
 		final byte[] dest = new byte[ARRAY_SIZE];
@@ -76,7 +124,7 @@ public class ByteArrayCopyAndroid extends ByteArrayCopy {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_jni_memcpy_GetReleasePrimitiveArrayCritical: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_jni_memcpy_GetReleasePrimitiveArrayCritical_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
 	}
 
 }
