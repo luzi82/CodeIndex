@@ -11,6 +11,53 @@ JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_getVersion(JNIEnv* 
 	}
 }
 
+JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_memcpyGetByteArrayElementsJNIABORT(JNIEnv* env,
+		jclass cls, jbyteArray dest, jbyteArray src) {
+	jbyte*destBuf,*srcBuf;
+	jsize len;
+	destBuf=((*env)->GetByteArrayElements(env,dest,NULL));
+	if(destBuf){
+		srcBuf=((*env)->GetByteArrayElements(env,src,NULL));
+		if(srcBuf){
+			len=(*env)->GetArrayLength(env,dest);
+			memcpy(destBuf,srcBuf,len);
+			(*env)->ReleaseByteArrayElements(env,src,srcBuf,JNI_ABORT);
+		}
+		(*env)->ReleaseByteArrayElements(env,dest,destBuf,0);
+	}
+}
+
+JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_memcpyGetByteArrayElements0(JNIEnv* env,
+		jclass cls, jbyteArray dest, jbyteArray src) {
+	jbyte*destBuf,*srcBuf;
+	jsize len;
+	destBuf=((*env)->GetByteArrayElements(env,dest,NULL));
+	if(destBuf){
+		srcBuf=((*env)->GetByteArrayElements(env,src,NULL));
+		if(srcBuf){
+			len=(*env)->GetArrayLength(env,dest);
+			memcpy(destBuf,srcBuf,len);
+			(*env)->ReleaseByteArrayElements(env,src,srcBuf,0);
+		}
+		(*env)->ReleaseByteArrayElements(env,dest,destBuf,0);
+	}
+}
+
+JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_memcpyGetReleasePrimitiveArrayCritical(JNIEnv* env,
+		jclass cls, jbyteArray dest, jbyteArray src) {
+	jbyte*destBuf,*srcBuf;
+	jsize len=(*env)->GetArrayLength(env,dest);
+	destBuf=((*env)->GetPrimitiveArrayCritical(env,dest,NULL));
+	if(destBuf){
+		srcBuf=((*env)->GetPrimitiveArrayCritical(env,src,NULL));
+		if(srcBuf){
+			memcpy(destBuf,srcBuf,len);
+			(*env)->ReleasePrimitiveArrayCritical(env,src,srcBuf,0);
+		}
+		(*env)->ReleasePrimitiveArrayCritical(env,dest,destBuf,0);
+	}
+}
+
 //JNIEXPORT void JNICALL Java_com_luzi82_randomwallpaper_LiveWallpaper_setSeed(JNIEnv* env,
 //		jclass cls, jlong _seed) {
 //	seed = _seed;

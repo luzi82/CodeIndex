@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.luzi82.codeindex.ByteArrayCopy;
 import com.luzi82.codeindex.ByteArrayFill;
 import com.luzi82.codeindex.CaseList;
+import com.luzi82.codeindex.android.testcase.ByteArrayCopyAndroid;
 
 public class MainActivity extends ListActivity {
 
@@ -30,7 +31,6 @@ public class MainActivity extends ListActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		configTestCase();
-		mCaseList = CaseList.getList();
 		Collections.sort(mCaseList, new Comparator<Class<?>>() {
 			@Override
 			public int compare(Class<?> lhs, Class<?> rhs) {
@@ -132,6 +132,8 @@ public class MainActivity extends ListActivity {
 	private void configTestCase() {
 		ByteArrayCopy.CASE_DATA = new int[] { 10000, 100000, 1000000 };
 		ByteArrayFill.CASE_DATA = new int[] { 10000, 100000, 1000000 };
+		mCaseList = CaseList.getList();
+		mCaseList.add(ByteArrayCopyAndroid.class);
 	}
 
 	@Override
