@@ -125,13 +125,14 @@ public class MainActivity extends ListActivity {
 	}
 
 	private void configTestCase() {
-		ByteArrayCopy.TIME_LIMIT=1000;
-		ByteArrayFill.TIME_LIMIT=1000;
+		ByteArrayCopy.TIME_LIMIT = 1000;
+		ByteArrayFill.TIME_LIMIT = 1000;
 		ByteArrayCopy.CASE_DATA = new int[] { 10000, 100000, 1000000 };
 		ByteArrayFill.CASE_DATA = new int[] { 10000, 100000, 1000000 };
 		mCaseList = CaseList.getList();
 		mCaseList.add(ByteArrayCopyAndroid.class);
 		mCaseList.add(ByteArrayFillAndroid.class);
+		mCaseList = CaseList.reduceList(mCaseList);
 		Collections.sort(mCaseList, new Comparator<Class<?>>() {
 			@Override
 			public int compare(Class<?> lhs, Class<?> rhs) {

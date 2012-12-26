@@ -41,4 +41,10 @@ public class CaseTest {
 		}
 	}
 
+	@Test
+	public void Test_isAssignableFrom() {
+		assertTrue(Object.class.isAssignableFrom(String.class));
+		assertFalse(String.class.isAssignableFrom(Object.class));
+	}
+
 }
