@@ -22,6 +22,7 @@ import com.luzi82.codeindex.ByteArrayFill;
 import com.luzi82.codeindex.CaseList;
 import com.luzi82.codeindex.android.testcase.ByteArrayCopyAndroid;
 import com.luzi82.codeindex.android.testcase.ByteArrayFillAndroid;
+import com.luzi82.codeindex.android.testcase.JniGetReleaseByteArray;
 
 public class MainActivity extends ListActivity {
 
@@ -132,6 +133,7 @@ public class MainActivity extends ListActivity {
 		mCaseList = CaseList.getList();
 		mCaseList.add(ByteArrayCopyAndroid.class);
 		mCaseList.add(ByteArrayFillAndroid.class);
+		mCaseList.add(JniGetReleaseByteArray.class);
 		mCaseList = CaseList.reduceList(mCaseList);
 		Collections.sort(mCaseList, new Comparator<Class<?>>() {
 			@Override

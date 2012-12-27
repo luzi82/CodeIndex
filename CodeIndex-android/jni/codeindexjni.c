@@ -11,6 +11,8 @@ JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_getVersion(JNIEnv* 
 	}
 }
 
+/////////////////
+
 JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_memcpyGetReleaseByteArrayElementsJNIABORT(JNIEnv* env,
 		jclass cls, jbyteArray dest, jbyteArray src) {
 	jbyte*destBuf,*srcBuf;
@@ -58,6 +60,8 @@ JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_memcpyGetReleasePri
 	}
 }
 
+/////////////////
+
 JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_memsetGetReleaseByteArrayElements(JNIEnv* env,
 		jclass cls, jbyteArray dest, jbyte value) {
 	jbyte*destBuf;
@@ -80,81 +84,40 @@ JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_memsetGetReleasePri
 	}
 }
 
-//JNIEXPORT void JNICALL Java_com_luzi82_randomwallpaper_LiveWallpaper_setSeed(JNIEnv* env,
-//		jclass cls, jlong _seed) {
-//	seed = _seed;
-//}
-//
-//JNIEXPORT void JNICALL Java_com_luzi82_randomwallpaper_LiveWallpaper_genFullColorRandom(JNIEnv* env,
-//		jclass cls, jbyteArray out) {
-//	static jint*ptr,*buf2,*bufEnd;
-//	static jsize len;
-//	buf2=(jint*)((*env)->GetByteArrayElements(env,out,NULL));
-//	if(buf2) {
-//		len=(*env)->GetArrayLength(env,out);
-//		ptr=buf2;
-//		bufEnd=buf2+(len>>2);
-//		while(ptr!=bufEnd) {
-//			seed=(seed*MULTIPLIER+0xbLL)&((1LL<<48)-1);
-//			*ptr=((int)(seed>>(48-32)))|0xff000000;
-//			++ptr;
-//		}
-//		(*env)->ReleaseByteArrayElements(env,out,(jbyte*)buf2,0);
-//	}
-//}
-//
-//JNIEXPORT void JNICALL Java_com_luzi82_randomwallpaper_LiveWallpaper_genGrayScaleRandom(JNIEnv* env,
-//		jclass cls, jbyteArray out) {
-//	static jint*ptr,*buf2,*bufEnd;
-//	static jsize len;
-//	static int remainOffset;
-//	static int remain;
-//	static int tmp;
-//	remainOffset=0;
-//	buf2=(jint*)((*env)->GetByteArrayElements(env,out,NULL));
-//	if(buf2) {
-//		len=(*env)->GetArrayLength(env,out);
-//		ptr=buf2;
-//		bufEnd=buf2+(len>>2);
-//		while(ptr!=bufEnd) {
-//			if(!remainOffset){
-//				seed=(seed*MULTIPLIER+0xbLL)&((1LL<<48)-1);
-//				remain=(int)(seed>>(48-32));
-//				remainOffset=4;
-//			}
-//			tmp=remain&0xff;
-//			*ptr=(tmp)|(tmp<<8)|(tmp<<16)|0xff000000;
-//			++ptr;
-//			remain>>=8;
-//			--remainOffset;
-//		}
-//		(*env)->ReleaseByteArrayElements(env,out,(jbyte*)buf2,0);
-//	}
-//}
-//
-//JNIEXPORT void JNICALL Java_com_luzi82_randomwallpaper_LiveWallpaper_genBlackWhiteRandom(JNIEnv* env,
-//		jclass cls, jbyteArray out) {
-//	static jint*ptr,*buf2,*bufEnd;
-//	static jsize len;
-//	static int remainOffset;
-//	static int remain;
-//	remainOffset=0;
-//	buf2=(jint*)((*env)->GetByteArrayElements(env,out,NULL));
-//	if(buf2) {
-//		len=(*env)->GetArrayLength(env,out);
-//		ptr=buf2;
-//		bufEnd=buf2+(len>>2);
-//		while(ptr!=bufEnd) {
-//			if(!remainOffset){
-//				seed=(seed*MULTIPLIER+0xbLL)&((1LL<<48)-1);
-//				remain=(int)(seed>>(48-32));
-//				remainOffset=32;
-//			}
-//			*ptr=(remain&0x1)?0xffffffff:0xff000000;
-//			++ptr;
-//			remain>>=1;
-//			--remainOffset;
-//		}
-//		(*env)->ReleaseByteArrayElements(env,out,(jbyte*)buf2,0);
-//	}
-//}
+/////////////////
+
+JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_loopGetReleaseByteArrayElementsJNIABORT(JNIEnv* env,
+		jclass cls, jbyteArray dest, jint loop) {
+	jbyte*destBuf;
+	jint i;
+	for(i=loop;i!=0;--i){
+		destBuf=((*env)->GetByteArrayElements(env,dest,NULL));
+		if(destBuf){
+			(*env)->ReleaseByteArrayElements(env,dest,destBuf,JNI_ABORT);
+		}
+	}
+}
+
+JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_loopGetReleaseByteArrayElements0(JNIEnv* env,
+		jclass cls, jbyteArray dest, jint loop) {
+	jbyte*destBuf;
+	jint i;
+	for(i=loop;i!=0;--i){
+		destBuf=((*env)->GetByteArrayElements(env,dest,NULL));
+		if(destBuf){
+			(*env)->ReleaseByteArrayElements(env,dest,destBuf,0);
+		}
+	}
+}
+
+JNIEXPORT void JNICALL Java_com_luzi82_codeindex_android_Jni_loopGetReleasePrimitiveArrayCritical(JNIEnv* env,
+		jclass cls, jbyteArray dest, jint loop) {
+	jbyte*destBuf;
+	jint i;
+	for(i=loop;i!=0;--i){
+		destBuf=((*env)->GetPrimitiveArrayCritical(env,dest,NULL));
+		if(destBuf){
+			(*env)->ReleasePrimitiveArrayCritical(env,dest,destBuf,0);
+		}
+	}
+}
