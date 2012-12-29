@@ -5,25 +5,10 @@ import com.luzi82.codeindex.android.Jni;
 
 public class JniGetReleaseByteArray extends Case {
 
-	public static int TIME_LIMIT = 2000;
-	public static int LOOP_PER_TICK = 100;
-	public static int[] CASE_DATA = {//
-	1,//
-			1000,//
-			1000000,//
-			10000000,//
-	};
-
-	public static int CHECK_SIZE = 1024;
-
 	public static final String DESCRIPTION = "JNI array size";
 
 	public Object[] test_GetReleaseByteArrayElementsJNIABORT_speed_data() {
-		Object[] ret = new Object[CASE_DATA.length];
-		for (int i = 0; i < CASE_DATA.length; ++i) {
-			ret[i] = CASE_DATA[i];
-		}
-		return ret;
+		return getTestArraySize();
 	}
 
 	public void test_GetReleaseByteArrayElementsJNIABORT_speed(Object arg) {
@@ -44,7 +29,7 @@ public class JniGetReleaseByteArray extends Case {
 	}
 
 	public Object[] test_GetReleaseByteArrayElements0_speed_data() {
-		return test_GetReleaseByteArrayElementsJNIABORT_speed_data();
+		return getTestArraySize();
 	}
 
 	public void test_GetReleaseByteArrayElements0_speed(Object arg) {
@@ -65,7 +50,7 @@ public class JniGetReleaseByteArray extends Case {
 	}
 
 	public Object[] test_GetReleasePrimitiveArrayCritical_speed_data() {
-		return test_GetReleaseByteArrayElementsJNIABORT_speed_data();
+		return getTestArraySize();
 	}
 
 	public void test_GetReleasePrimitiveArrayCritical_speed(Object arg) {

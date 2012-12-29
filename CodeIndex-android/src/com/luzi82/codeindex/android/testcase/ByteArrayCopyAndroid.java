@@ -26,7 +26,7 @@ public class ByteArrayCopyAndroid extends ByteArrayCopy {
 	}
 
 	public Object[] test_jni_memcpy_speed_data() {
-		return test_System_arraycopy_speed_data();
+		return getTestArraySize();
 	}
 
 	public void test_jni_memcpy_speed(Object arg) {

@@ -24,7 +24,7 @@ public class ByteArrayFillAndroid extends ByteArrayFill {
 	}
 
 	public Object[] test_jni_memset_speed_data() {
-		return test_System_arraycopy_speed_data();
+		return getTestArraySize();
 	}
 
 	public void test_jni_memset_speed(Object arg) {

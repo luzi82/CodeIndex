@@ -4,24 +4,10 @@ public class ByteArrayCopy extends Case {
 
 	public static final String DESCRIPTION = "System.arraycopy vs for-loop{a[i]=b[i]}";
 
-	public static int TIME_LIMIT = 2000;
-	public static int LOOP_PER_TICK = 100;
-	// public static long LOOP_COUNT = 10000000000L;
-	public static int[] CASE_DATA = {//
-	1,//
-			1000,//
-			1000000,//
-			10000000,//
-	};
-
 	public static int CHECK_SIZE = 1024;
 
 	public Object[] test_System_arraycopy_speed_data() {
-		Object[] ret = new Object[CASE_DATA.length];
-		for (int i = 0; i < CASE_DATA.length; ++i) {
-			ret[i] = CASE_DATA[i];
-		}
-		return ret;
+		return getTestArraySize();
 	}
 
 	public void test_System_arraycopy_speed(Object arg) {
@@ -45,7 +31,7 @@ public class ByteArrayCopy extends Case {
 	}
 
 	public Object[] test_manualcopy_speed_data() {
-		return test_System_arraycopy_speed_data();
+		return getTestArraySize();
 	}
 
 	public void test_manualcopy_speed(Object arg) {

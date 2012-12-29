@@ -6,6 +6,16 @@ import java.util.Comparator;
 
 public class Case implements Runnable {
 
+	public static int TIME_LIMIT = 2000;
+	public static int LOOP_PER_TICK = 100;
+	public static int[] TEST_ARRAY_SIZE = {//
+	1,//
+			1000,//
+			1000000,//
+			10000000,//
+	};
+	public static int CHECK_SIZE = 1024;
+
 	public static interface Listener {
 		public void msg(String aMsg);
 	}
@@ -153,6 +163,14 @@ public class Case implements Runnable {
 		if (numString.endsWith("."))
 			numString = numString.substring(0, numString.length() - 1);
 		return signSuf + numString + mp[mpIdx];
+	}
+	
+	public static Object[] getTestArraySize(){
+		Object[] ret = new Object[TEST_ARRAY_SIZE.length];
+		for (int i = 0; i < TEST_ARRAY_SIZE.length; ++i) {
+			ret[i] = TEST_ARRAY_SIZE[i];
+		}
+		return ret;
 	}
 
 }

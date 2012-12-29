@@ -4,26 +4,12 @@ import java.util.Arrays;
 
 public class ByteArrayFill extends Case {
 
-	public static int TIME_LIMIT = 2000;
-	public static int LOOP_PER_TICK = 100;
 	public static int SRC_SIZE = 10000;
-	public static int[] CASE_DATA = {//
-	1,//
-			1000,//
-			1000000,//
-			10000000,//
-	};
-
-	public static int CHECK_SIZE = 1024;
 
 	public static final String DESCRIPTION = "Arrays.fill vs for-loop{a[i]=0} vs System.arraycopy";
 
 	public Object[] test_Arrays_fill_speed_data() {
-		Object[] ret = new Object[CASE_DATA.length];
-		for (int i = 0; i < CASE_DATA.length; ++i) {
-			ret[i] = CASE_DATA[i];
-		}
-		return ret;
+		return getTestArraySize();
 	}
 
 	public void test_Arrays_fill_speed(Object arg) {
@@ -46,7 +32,7 @@ public class ByteArrayFill extends Case {
 	}
 
 	public Object[] test_manualfill_speed_data() {
-		return test_Arrays_fill_speed_data();
+		return getTestArraySize();
 	}
 
 	public void test_manualfill_speed(Object arg) {
@@ -71,7 +57,7 @@ public class ByteArrayFill extends Case {
 	}
 
 	public Object[] test_System_arraycopy_speed_data() {
-		return test_Arrays_fill_speed_data();
+		return getTestArraySize();
 	}
 
 	public void test_System_arraycopy_speed(Object arg) {
