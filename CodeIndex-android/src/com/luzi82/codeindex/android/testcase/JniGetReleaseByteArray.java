@@ -5,7 +5,7 @@ import com.luzi82.codeindex.android.Jni;
 
 public class JniGetReleaseByteArray extends Case {
 
-	public static final String DESCRIPTION = "JNI array size";
+	public static final String DESCRIPTION = "JNI array access methods comparison";
 
 	public Object[] test_GetReleaseByteArrayElementsJNIABORT_speed_data() {
 		return getTestArraySize();
