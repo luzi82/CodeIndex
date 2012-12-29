@@ -18,7 +18,7 @@ public class FunctionLength extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * 1;
-		msg(String.format("test_00001_speed: %s lines, %ss/line", metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_00010_speed(Object arg) {
@@ -33,7 +33,7 @@ public class FunctionLength extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * 10;
-		msg(String.format("test_00010_speed: %s lines, %ss/line", metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_00100_speed(Object arg) {
@@ -48,7 +48,7 @@ public class FunctionLength extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * 100;
-		msg(String.format("test_00100_speed: %s lines, %ss/line", metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_01000_speed(Object arg) {
@@ -63,7 +63,7 @@ public class FunctionLength extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * 1000;
-		msg(String.format("test_01000_speed: %s lines, %ss/line", metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_10000_speed(Object arg) {
@@ -78,7 +78,7 @@ public class FunctionLength extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * 10000;
-		msg(String.format("test_10000_speed: %s lines, %ss/line", metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	// public void test_20000_speed(Object arg) {

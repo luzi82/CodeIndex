@@ -46,7 +46,7 @@ public class ByteArrayCopyAndroid extends ByteArrayCopy {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_jni_memcpy_speed: %sB: %sB/s, %ss/B", metricPrefix(ARRAY_SIZE), metricPrefix(donePerSec), metricPrefix(1/donePerSec)));
+		msgTimeScore(metricPrefix(ARRAY_SIZE) + "B", donePerSec, "B");
 	}
 
 //	// /////////////

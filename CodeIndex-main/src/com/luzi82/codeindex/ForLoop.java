@@ -19,7 +19,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_forloop_ppi_ne(Object arg) {
@@ -34,7 +34,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_forloop_ipp_lt(Object arg) {
@@ -49,7 +49,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_forloop_ipp_ne(Object arg) {
@@ -64,7 +64,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_forloop_mmi_gt(Object arg) {
@@ -79,7 +79,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_forloop_mmi_ne(Object arg) {
@@ -94,7 +94,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_forloop_imm_gt(Object arg) {
@@ -109,7 +109,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_forloop_imm_ne(Object arg) {
@@ -124,7 +124,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public void test_repeat(Object arg) {
@@ -139,7 +139,7 @@ public class ForLoop extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * Config.REPEAT_COUNT;
-		msg(String.format("%s: %s line/s, %ss/line", getFunctionName(), metricPrefix(donePerSec), metricPrefix(1 / donePerSec)));
+		msgTimeScore(donePerSec,"line");
 	}
 
 	public static void main(String[] args) {

@@ -196,4 +196,12 @@ public class Case implements Runnable {
 		return getFunctionName(1);
 	}
 
+	public void msgTimeScore(String aMethodArg, float aScore, String aUnit) {
+		msg(String.format("%s: %s: %s%s/s, %ss/%s", getFunctionName(1), aMethodArg, metricPrefix(aScore), aUnit, metricPrefix(1 / aScore), aUnit));
+	}
+
+	public void msgTimeScore(float aScore, String aUnit) {
+		msg(String.format("%s: %s%s/s, %ss/%s", getFunctionName(1), metricPrefix(aScore), aUnit, metricPrefix(1 / aScore), aUnit));
+	}
+
 }
