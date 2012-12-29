@@ -5,11 +5,12 @@ import java.util.LinkedList;
 
 public class CaseList {
 
-	public static final Class<?>[] CASE_ARRAY = {//
+	private static final Class<?>[] CASE_ARRAY = {//
 	ByteArrayCopy.class,//
 			ByteArrayFill.class,//
 			FunctionLength.class,//
 			ForLoop.class,//
+			findClass("com.luzi82.codeindex.gen.AccessLoop"),//
 	};
 
 	public static LinkedList<Class<?>> getList() {
@@ -30,6 +31,14 @@ public class CaseList {
 			}
 		}
 		return ret;
+	}
+
+	public static Class<?> findClass(String aName) {
+		try {
+			return Class.forName("com.luzi82.codeindex.gen.AccessLoop");
+		} catch (ClassNotFoundException e) {
+			throw new Error();
+		}
 	}
 
 }

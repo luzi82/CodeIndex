@@ -11,7 +11,7 @@
 			<arguments>
 				<dictionary>
 					<key>LaunchConfigHandle</key>
-					<value>&lt;project&gt;/.externalToolBuilders/build.mk.launch</value>
+					<value>&lt;project&gt;/.externalToolBuilders/build.mk all.launch</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>
@@ -31,6 +31,16 @@
 				<dictionary>
 					<key>incclean</key>
 					<value>true</value>
+				</dictionary>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
+			<triggers>clean,</triggers>
+			<arguments>
+				<dictionary>
+					<key>LaunchConfigHandle</key>
+					<value>&lt;project&gt;/.externalToolBuilders/build.mk clean.launch</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>
