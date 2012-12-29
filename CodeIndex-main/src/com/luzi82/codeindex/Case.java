@@ -164,13 +164,36 @@ public class Case implements Runnable {
 			numString = numString.substring(0, numString.length() - 1);
 		return signSuf + numString + mp[mpIdx];
 	}
-	
-	public static Object[] getTestArraySize(){
+
+	public static Object[] getTestArraySize() {
 		Object[] ret = new Object[TEST_ARRAY_SIZE.length];
 		for (int i = 0; i < TEST_ARRAY_SIZE.length; ++i) {
 			ret[i] = TEST_ARRAY_SIZE[i];
 		}
 		return ret;
+	}
+
+	private static int mStackTraceLv = -1;
+
+	public static String getFunctionName(int aDepth) {
+		StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+		if (mStackTraceLv == -1) {
+			for (int i = 0; i < stackTraceElements.length; ++i) {
+				StackTraceElement ste = stackTraceElements[i];
+				if (ste.getMethodName().equals("getFunctionName")) {
+					mStackTraceLv = i + 1;
+					break;
+				}
+			}
+			if (mStackTraceLv == -1) {
+				throw new Error();
+			}
+		}
+		return stackTraceElements[mStackTraceLv + aDepth].getMethodName();
+	}
+
+	public static String getFunctionName() {
+		return getFunctionName(1);
 	}
 
 }

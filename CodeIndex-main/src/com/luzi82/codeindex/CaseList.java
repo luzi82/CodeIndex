@@ -9,6 +9,7 @@ public class CaseList {
 	ByteArrayCopy.class,//
 			ByteArrayFill.class,//
 			FunctionLength.class,//
+			ForLoop.class,//
 	};
 
 	public static LinkedList<Class<?>> getList() {
