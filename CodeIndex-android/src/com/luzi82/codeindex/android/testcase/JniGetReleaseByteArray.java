@@ -25,7 +25,7 @@ public class JniGetReleaseByteArray extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000;
-		msg(String.format("test_GetReleaseByteArrayElementsJNIABORT_speed: %d: %s times", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_GetReleaseByteArrayElementsJNIABORT_speed: %sB: %s times", metricPrefix(ARRAY_SIZE), metricPrefix(donePerSec)));
 	}
 
 	public Object[] test_GetReleaseByteArrayElements0_speed_data() {
@@ -46,7 +46,7 @@ public class JniGetReleaseByteArray extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000;
-		msg(String.format("test_GetReleaseByteArrayElements0_speed: %d: %s times", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_GetReleaseByteArrayElements0_speed: %sB: %s times", metricPrefix(ARRAY_SIZE), metricPrefix(donePerSec)));
 	}
 
 	public Object[] test_GetReleasePrimitiveArrayCritical_speed_data() {
@@ -67,7 +67,7 @@ public class JniGetReleaseByteArray extends Case {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000;
-		msg(String.format("test_GetReleasePrimitiveArrayCritical_speed: %d: %s times", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_GetReleasePrimitiveArrayCritical_speed: %sB: %s times", metricPrefix(ARRAY_SIZE), metricPrefix(donePerSec)));
 	}
 
 }

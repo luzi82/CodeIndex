@@ -95,7 +95,7 @@ public class Case implements Runnable {
 	// msg(String.format("%s: %d", m.getName(), ret));
 	// } else {
 	// m.invoke(this, aObject[1]);
-	// msg(String.format("%s: %s: %d", m.getName(), aObject[0], ret));
+	// msg(String.format("%sB: %s: %d", m.getName(), aObject[0], ret));
 	// }
 	// } catch (Throwable t) {
 	// throw new Error(t);

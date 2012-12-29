@@ -43,7 +43,7 @@ public class ByteArrayFillAndroid extends ByteArrayFill {
 		}
 		long timeDone = now - startTime;
 		float donePerSec = (((float) done) / timeDone) * 1000 * ARRAY_SIZE;
-		msg(String.format("test_jni_memset_speed: %d: %sB/s", ARRAY_SIZE, metricPrefix(donePerSec)));
+		msg(String.format("test_jni_memset_speed: %sB: %sB/s", metricPrefix(ARRAY_SIZE), metricPrefix(donePerSec)));
 	}
 
 //	/////////////////////
