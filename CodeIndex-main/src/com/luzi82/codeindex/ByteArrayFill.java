@@ -4,15 +4,16 @@ import java.util.Arrays;
 
 public class ByteArrayFill extends Case {
 
-	public static int TIME_LIMIT = 10000;
+	public static int TIME_LIMIT = 2000;
 	public static int LOOP_PER_TICK = 100;
 	public static int SRC_SIZE = 10000;
 	public static int[] CASE_DATA = {//
-	100000,//
+	1,//
+			1000,//
 			1000000,//
 			10000000,//
 	};
-	
+
 	public static int CHECK_SIZE = 1024;
 
 	public static final String DESCRIPTION = "Arrays.fill vs for-loop{a[i]=0} vs System.arraycopy";
@@ -83,8 +84,13 @@ public class ByteArrayFill extends Case {
 		int done = 0;
 		while (now < endTime) {
 			for (int i = 0; i < LOOP_PER_TICK; ++i) {
-				for (int j = 0; j < ARRAY_SIZE; j += SRC_SIZE) {
+				int j;
+				final int JMAX = ARRAY_SIZE - SRC_SIZE;
+				for (j = 0; j <= JMAX; j += SRC_SIZE) {
 					System.arraycopy(src, 0, dest, j, SRC_SIZE);
+				}
+				if (j != ARRAY_SIZE) {
+					System.arraycopy(src, 0, dest, j, ARRAY_SIZE - j);
 				}
 			}
 			done += LOOP_PER_TICK;

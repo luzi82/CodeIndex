@@ -4,15 +4,16 @@ public class ByteArrayCopy extends Case {
 
 	public static final String DESCRIPTION = "System.arraycopy vs for-loop{a[i]=b[i]}";
 
-	public static int TIME_LIMIT = 10000;
+	public static int TIME_LIMIT = 2000;
 	public static int LOOP_PER_TICK = 100;
 	// public static long LOOP_COUNT = 10000000000L;
 	public static int[] CASE_DATA = {//
-	100000,//
+	1,//
+			1000,//
 			1000000,//
 			10000000,//
 	};
-	
+
 	public static int CHECK_SIZE = 1024;
 
 	public Object[] test_System_arraycopy_speed_data() {

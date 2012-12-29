@@ -5,7 +5,7 @@ import com.luzi82.codeindex.android.Jni;
 
 public class JniGetReleaseByteArray extends Case {
 
-	public static int TIME_LIMIT = 1000;
+	public static int TIME_LIMIT = 2000;
 	public static int LOOP_PER_TICK = 100;
 	public static int[] CASE_DATA = {//
 	1,//
