@@ -8,6 +8,7 @@ public class CaseList {
 	public static final Class<?>[] CASE_ARRAY = {//
 	ByteArrayCopy.class,//
 			ByteArrayFill.class,//
+			FunctionLength.class,//
 	};
 
 	public static LinkedList<Class<?>> getList() {
